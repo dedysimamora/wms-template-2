@@ -1,0 +1,14 @@
+node_modules/
+.next/
+dist/
+coverage/
+.turbo/
+*.tsbuildinfo
+.env
+.env.*.local
+.DS_Store
+next-env.d.ts
+packages/db/.introspect/
+src/brand/
+public/branding/
+deploy/*.env

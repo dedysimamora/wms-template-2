@@ -1,0 +1,27 @@
+{
+  "name": "@wms/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "migrate": "tsx --env-file-if-exists=../../.env src/cli/run.ts migrate",
+    "seed": "tsx --env-file-if-exists=../../.env src/cli/run.ts seed",
+    "reset": "tsx --env-file-if-exists=../../.env src/cli/run.ts reset",
+    "introspect": "drizzle-kit pull --config drizzle.introspect.config.ts",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.3",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@testcontainers/postgresql": "^12.1.0",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11"
+  }
+}

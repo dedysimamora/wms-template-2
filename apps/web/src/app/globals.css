@@ -1,0 +1,224 @@
+@import 'tailwindcss';
+@import '../brand/tokens.css';
+
+/* =====================================================================
+   Design System v0.2 "Calm workspace" (frontend §4). Komponen HANYA memakai token semantik.
+   Kanvas (--background) = sidebar & latar; lembar konten = --surface-1; isian halus = --surface-2/3.
+   Primitive brand → brands/<id>/tokens.css. Status TIDAK diturunkan dari brand.
+   Gate kontras: test/contrast.test.ts (WCAG, per mode light/dark/hc).
+   ===================================================================== */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant hc (&:where(.hc, .hc *));
+
+:root {
+  /* surface — netral hangat rendah kroma agar tak bersaing dengan warna brand */
+  --background: oklch(0.975 0.003 95);
+  --foreground: oklch(0.22 0.008 95);
+  --surface-1: oklch(1 0 0);
+  --surface-2: oklch(0.967 0.004 95);
+  --surface-3: oklch(0.935 0.005 95);
+  --muted-foreground: oklch(0.5 0.01 95);
+  --border: oklch(0.915 0.005 95);
+  --border-strong: oklch(0.84 0.007 95);
+  --ring: var(--brand-500);
+  --elev-xs: 0 1px 2px oklch(0.2 0.01 95 / 0.05);
+  --elev-sheet: 0 1px 3px oklch(0.2 0.01 95 / 0.05), 0 0 0 1px oklch(0.2 0.01 95 / 0.03);
+  --elev-popover: 0 8px 24px oklch(0.2 0.01 95 / 0.12), 0 2px 6px oklch(0.2 0.01 95 / 0.08);
+  /* brand (semantik) */
+  --primary: var(--brand-600);
+  --primary-hover: var(--brand-700);
+  --primary-subtle: var(--brand-50);
+  --primary-foreground: var(--brand-on-600);
+  /* feedback: bg / fg / border */
+  --status-success-bg: oklch(0.95 0.05 150);
+  --status-success-fg: oklch(0.36 0.1 150);
+  --status-success-border: oklch(0.78 0.1 150);
+  --status-warning-bg: oklch(0.96 0.06 85);
+  --status-warning-fg: oklch(0.4 0.09 70);
+  --status-warning-border: oklch(0.82 0.12 85);
+  --status-danger-bg: oklch(0.95 0.03 25);
+  --status-danger-fg: oklch(0.45 0.17 27);
+  --status-danger-border: oklch(0.8 0.09 25);
+  --status-info-bg: oklch(0.95 0.03 245);
+  --status-info-fg: oklch(0.42 0.13 250);
+  --status-info-border: oklch(0.8 0.08 245);
+  --status-neutral-bg: oklch(0.95 0.005 262);
+  --status-neutral-fg: oklch(0.4 0.015 262);
+  --status-neutral-border: oklch(0.85 0.01 262);
+  /* tipografi: Plus Jakarta Sans + JetBrains Mono di-self-host via next/font (app/fonts.ts) */
+  --font-sans-stack:
+    var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono-stack:
+    var(--font-jetbrains), ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* ukuran & density */
+  --touch-min: 44px;
+  --hh-touch-min: 56px;
+  --row-compact: 40px;
+  --row-comfortable: 44px;
+  --row-handheld: 64px;
+  /* motion & layer */
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --z-dropdown: 20;
+  --z-dialog: 40;
+  --z-toast: 50;
+  --z-scan-feedback: 60;
+  --z-offline-banner: 70;
+  /* Chevron <Select> (appearance:none) — data URI tak bisa membaca var CSS, jadi hex ≈ --muted-foreground. */
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6a65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.dark {
+  --background: oklch(0.165 0.003 95);
+  --foreground: oklch(0.95 0.004 95);
+  --surface-1: oklch(0.205 0.004 95);
+  --surface-2: oklch(0.245 0.005 95);
+  --surface-3: oklch(0.285 0.006 95);
+  --muted-foreground: oklch(0.74 0.008 95);
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23aeada6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --border: oklch(0.3 0.005 95);
+  --border-strong: oklch(0.4 0.006 95);
+  --elev-xs: 0 1px 2px oklch(0 0 0 / 0.3);
+  --elev-sheet: 0 0 0 1px oklch(1 0 0 / 0.04);
+  --elev-popover: 0 8px 24px oklch(0 0 0 / 0.45), 0 0 0 1px oklch(1 0 0 / 0.06);
+  --ring: var(--brand-400);
+  --primary: var(--brand-400);
+  --primary-hover: var(--brand-300);
+  --primary-subtle: var(--brand-subtle-dark);
+  --primary-foreground: var(--brand-on-400);
+  --status-success-bg: oklch(0.27 0.05 150);
+  --status-success-fg: oklch(0.86 0.1 150);
+  --status-success-border: oklch(0.45 0.08 150);
+  --status-warning-bg: oklch(0.29 0.05 80);
+  --status-warning-fg: oklch(0.88 0.11 85);
+  --status-warning-border: oklch(0.5 0.09 80);
+  --status-danger-bg: oklch(0.28 0.06 25);
+  --status-danger-fg: oklch(0.85 0.09 25);
+  --status-danger-border: oklch(0.5 0.12 25);
+  --status-info-bg: oklch(0.27 0.05 250);
+  --status-info-fg: oklch(0.86 0.07 245);
+  --status-info-border: oklch(0.48 0.09 250);
+  --status-neutral-bg: oklch(0.27 0.01 262);
+  --status-neutral-fg: oklch(0.85 0.01 262);
+  --status-neutral-border: oklch(0.42 0.01 262);
+}
+
+/* High-contrast handheld (≥ 7:1) */
+.hc {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0 0);
+  --surface-1: oklch(1 0 0);
+  --surface-2: oklch(0.96 0 0);
+  --surface-3: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.3 0 0);
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23262626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --border: oklch(0.2 0 0);
+  --border-strong: oklch(0.12 0 0);
+  --elev-sheet: none;
+  --ring: oklch(0.12 0 0);
+  --primary: var(--brand-800);
+  --primary-hover: var(--brand-900);
+  --primary-foreground: oklch(1 0 0);
+  --status-success-bg: oklch(1 0 0);
+  --status-success-fg: oklch(0.3 0.09 150);
+  --status-warning-bg: oklch(1 0 0);
+  --status-warning-fg: oklch(0.33 0.07 70);
+  --status-danger-bg: oklch(1 0 0);
+  --status-danger-fg: oklch(0.36 0.14 27);
+  --status-info-bg: oklch(1 0 0);
+  --status-info-fg: oklch(0.32 0.12 255);
+  --status-neutral-bg: oklch(1 0 0);
+  --status-neutral-fg: oklch(0.2 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success-bg: var(--status-success-bg);
+  --color-success-fg: var(--status-success-fg);
+  --color-success-border: var(--status-success-border);
+  --color-warning-bg: var(--status-warning-bg);
+  --color-warning-fg: var(--status-warning-fg);
+  --color-warning-border: var(--status-warning-border);
+  --color-danger-bg: var(--status-danger-bg);
+  --color-danger-fg: var(--status-danger-fg);
+  --color-danger-border: var(--status-danger-border);
+  --color-info-bg: var(--status-info-bg);
+  --color-info-fg: var(--status-info-fg);
+  --color-info-border: var(--status-info-border);
+  --color-neutral-bg: var(--status-neutral-bg);
+  --color-neutral-fg: var(--status-neutral-fg);
+  --color-neutral-border: var(--status-neutral-border);
+  --font-sans: var(--font-sans-stack);
+  --font-mono: var(--font-mono-stack);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --shadow-xs: var(--elev-xs);
+  --shadow-sheet: var(--elev-sheet);
+  --shadow-popover: var(--elev-popover);
+  --text-hh-code: 1.75rem;
+  --text-hh-qty: 2.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans-stack);
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  summary {
+    cursor: pointer;
+  }
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .hc :focus-visible {
+    outline-width: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0ms !important;
+      animation-duration: 0ms !important;
+    }
+  }
+}

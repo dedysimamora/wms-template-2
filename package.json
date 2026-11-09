@@ -1,0 +1,36 @@
+{
+  "name": "wms-v2",
+  "private": true,
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev --filter=@wms/web",
+    "build": "turbo run build",
+    "lint": "eslint packages && pnpm --filter @wms/web lint",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "test:integration": "turbo run test:integration",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @wms/db migrate",
+    "db:seed": "pnpm --filter @wms/db seed",
+    "db:reset": "pnpm --filter @wms/db reset",
+    "quality": "pnpm format:check && pnpm lint && pnpm type-check && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.4",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "turbo": "^2.11.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.1",
+    "vitest": "^5.0.1"
+  }
+}

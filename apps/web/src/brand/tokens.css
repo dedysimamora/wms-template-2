@@ -1,0 +1,21 @@
+/* Primitive brand tokens (frontend §3.1) — Levytech WMS: teal (hue 188, semua dalam gamut sRGB).
+   Klien cukup mengganti skala ini + foreground. Gate kontras: apps/web/test/contrast.test.ts. */
+:root {
+  --brand-50: oklch(0.97 0.025 188);
+  --brand-100: oklch(0.93 0.045 188);
+  --brand-200: oklch(0.87 0.07 188);
+  --brand-300: oklch(0.79 0.095 188);
+  --brand-400: oklch(0.72 0.11 188);
+  --brand-500: oklch(0.61 0.1 188);
+  --brand-600: oklch(0.5 0.085 188);
+  --brand-700: oklch(0.43 0.072 188);
+  --brand-800: oklch(0.36 0.06 188);
+  --brand-900: oklch(0.29 0.048 188);
+  --brand-950: oklch(0.21 0.034 188);
+  /* WAJIB eksplisit (tidak diasumsikan): warna teks di atas --primary */
+  --brand-on-600: oklch(0.99 0 0);
+  --brand-on-400: oklch(0.18 0.03 188);
+  /* Latar lembut brand di mode gelap (mis. avatar user) */
+  --brand-subtle-dark: oklch(0.28 0.04 188);
+  --radius: 0.5rem; /* kartu = +4px (radius-xl), lembar = +8px (radius-2xl) */
+}

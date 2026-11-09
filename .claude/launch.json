@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "wms-v2-web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@wms/web", "dev"],
+      "port": 3000
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "app": {
+    "loading": "Memuat…",
+    "retry": "Coba lagi",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "search": "Cari",
+    "logout": "Keluar",
+    "back": "Kembali",
+    "items": "{n} item",
+    "prev": "Sebelumnya",
+    "next": "Berikutnya",
+    "all": "Semua",
+    "yes": "Ya",
+    "no": "Tidak",
+    "close": "Tutup",
+    "delete": "Hapus",
+    "edit": "Ubah",
+    "menu": "Menu",
+    "actions": "Aksi",
+    "theme": "Tema",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeHc": "Kontras tinggi",
+    "pageOf": "Hal {page} dari {pages}",
+    "breadcrumb": "Jejak navigasi",
+    "mainMenu": "Menu utama",
+    "account": "Akun",
+    "toggleGroup": "Buka/tutup grup {name}",
+    "status": "Status",
+    "activate": "Aktifkan",
+    "deactivate": "Nonaktifkan"
+  },
+  "auth": {
+    "title": "Masuk",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Masuk",
+    "changePassword": "Ganti password",
+    "currentPassword": "Password saat ini",
+    "newPassword": "Password baru",
+    "mustChange": "Anda wajib mengganti password sebelum melanjutkan.",
+    "changed": "Password diganti. Silakan masuk kembali."
+  },
+  "nav": {
+    "sample": "Contoh",
+    "sample_items": "Sample Items",
+    "admin": "Administrasi",
+    "admin_users": "Users"
+  },
+  "forbidden": {
+    "title": "Akses ditolak",
+    "body": "Anda tidak memiliki hak untuk membuka halaman ini."
+  },
+  "comingSoon": {
+    "title": "Belum tersedia",
+    "body": "Menu sudah terdaftar, halamannya belum dibuat."
+  },
+  "errors": {
+    "generic": "Terjadi kesalahan. Coba lagi.",
+    "INVALID_CREDENTIALS": "Username atau password salah.",
+    "ACCOUNT_LOCKED": "Akun terkunci sementara. Coba lagi nanti.",
+    "ACCOUNT_INACTIVE": "Akun nonaktif.",
+    "MUST_CHANGE_PASSWORD": "Ganti password terlebih dahulu.",
+    "TOKEN_REUSED": "Sesi tidak valid, silakan login ulang.",
+    "CODE_TAKEN": "Kode sudah dipakai.",
+    "LOCK_TIMEOUT": "Sistem sibuk, coba lagi.",
+    "IN_USE": "Masih dipakai data lain — tidak bisa dihapus.",
+    "LAST_ADMIN": "Ditolak: perubahan ini menyisakan nol administrator.",
+    "SELF_ACTION": "Tidak bisa menonaktifkan akun sendiri.",
+    "VALIDATION_ERROR": "Isian belum valid.",
+    "UNAUTHENTICATED": "Sesi habis, silakan masuk lagi.",
+    "FORBIDDEN": "Anda tidak berhak melakukan aksi ini.",
+    "NOT_FOUND": "Data tidak ditemukan.",
+    "CONFLICT": "Data bentrok, muat ulang.",
+    "BUSINESS_RULE": "Melanggar aturan bisnis.",
+    "INTERNAL": "Kesalahan server.",
+    "UNAVAILABLE": "Layanan sedang tidak tersedia."
+  },
+  "status": {
+    "ACTIVE": "Aktif",
+    "INACTIVE": "Nonaktif",
+    "LOCKED": "Terkunci"
+  },
+  "users": {
+    "description": "Kelola akun & role. User tidak pernah dihapus — nonaktifkan bila tidak dipakai lagi.",
+    "new": "User baru",
+    "username": "Username",
+    "fullName": "Nama lengkap",
+    "tempPassword": "Password sementara",
+    "passwordHint": "Minimal 10 karakter, huruf dan angka. Wajib diganti saat login pertama.",
+    "roles": "Role",
+    "saveRoles": "Simpan role",
+    "rolesSaved": "Role diperbarui.",
+    "statusActions": "Status & sesi",
+    "sessions": "{n} sesi aktif",
+    "lastLogin": "Login terakhir",
+    "empty": "Tidak ada user.",
+    "created": "User dibuat.",
+    "action": {
+      "activate": "Aktifkan",
+      "deactivate": "Nonaktifkan",
+      "unlock": "Buka kunci",
+      "reset-password": "Reset password",
+      "revoke-sessions": "Cabut semua sesi"
+    },
+    "done": {
+      "activate": "User diaktifkan.",
+      "deactivate": "User dinonaktifkan.",
+      "unlock": "Kunci dibuka.",
+      "reset-password": "Password direset.",
+      "revoke-sessions": "Semua sesi dicabut."
+    }
+  },
+  "sampleItems": {
+    "description": "Contoh CRUD netral — acuan pola halaman. Staff bisa tambah & ubah, hanya Admin yang bisa menghapus.",
+    "new": "Item baru",
+    "code": "Kode",
+    "name": "Nama",
+    "descriptionLabel": "Deskripsi",
+    "createdBy": "Dibuat oleh",
+    "updatedAt": "Diubah",
+    "empty": "Belum ada item.",
+    "created": "Item dibuat.",
+    "updated": "Item diperbarui.",
+    "activated": "Item diaktifkan.",
+    "deactivated": "Item dinonaktifkan.",
+    "deleted": "Item {code} dihapus.",
+    "editTitle": "Ubah {code}",
+    "confirmDelete": "Hapus {code}?",
+    "confirmDeleteDesc": "Item dihapus permanen dan tidak bisa dikembalikan."
+  }
+}

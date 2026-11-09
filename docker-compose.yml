@@ -1,0 +1,20 @@
+# Postgres lokal untuk development (versi minimum target = 14).
+# Port host 5433 agar tidak bentrok dengan Postgres lain (mis. repo wms-template di 5432).
+name: wms-v2-dev
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: wms
+      POSTGRES_PASSWORD: wms
+      POSTGRES_DB: wms
+    ports:
+      - '5433:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U wms']
+      interval: 2s
+      retries: 30
+volumes:
+  pgdata:

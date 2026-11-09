@@ -1,0 +1,133 @@
+{
+  "app": {
+    "loading": "Loading…",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "logout": "Sign out",
+    "back": "Back",
+    "items": "{n} items",
+    "prev": "Previous",
+    "next": "Next",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "delete": "Delete",
+    "edit": "Edit",
+    "menu": "Menu",
+    "actions": "Actions",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeHc": "High contrast",
+    "pageOf": "Page {page} of {pages}",
+    "breadcrumb": "Breadcrumb",
+    "mainMenu": "Main menu",
+    "account": "Account",
+    "toggleGroup": "Toggle {name} group",
+    "status": "Status",
+    "activate": "Activate",
+    "deactivate": "Deactivate"
+  },
+  "auth": {
+    "title": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign in",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "mustChange": "You must change your password before continuing.",
+    "changed": "Password changed. Please sign in again."
+  },
+  "nav": {
+    "sample": "Sample",
+    "sample_items": "Sample Items",
+    "admin": "Administration",
+    "admin_users": "Users"
+  },
+  "forbidden": {
+    "title": "Access denied",
+    "body": "You are not allowed to open this page."
+  },
+  "comingSoon": {
+    "title": "Not available yet",
+    "body": "This menu is registered but its page has not been built yet."
+  },
+  "errors": {
+    "generic": "Terjadi kesalahan. Coba lagi.",
+    "INVALID_CREDENTIALS": "Username atau password salah.",
+    "ACCOUNT_LOCKED": "Akun terkunci sementara. Coba lagi nanti.",
+    "ACCOUNT_INACTIVE": "Akun nonaktif.",
+    "MUST_CHANGE_PASSWORD": "Change your password first.",
+    "TOKEN_REUSED": "Invalid session, please sign in again.",
+    "CODE_TAKEN": "Code already used.",
+    "LOCK_TIMEOUT": "System busy, try again.",
+    "IN_USE": "Still referenced by other data — cannot be deleted.",
+    "LAST_ADMIN": "Rejected: this change would leave no administrator.",
+    "SELF_ACTION": "You cannot deactivate your own account.",
+    "VALIDATION_ERROR": "Isian belum valid.",
+    "UNAUTHENTICATED": "Session expired, please sign in again.",
+    "FORBIDDEN": "Anda tidak berhak melakukan aksi ini.",
+    "NOT_FOUND": "Not found.",
+    "CONFLICT": "Conflicting data, reload.",
+    "BUSINESS_RULE": "Business rule violated.",
+    "INTERNAL": "Server error.",
+    "UNAVAILABLE": "Service temporarily unavailable."
+  },
+  "status": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "LOCKED": "Locked"
+  },
+  "users": {
+    "description": "Users are never deleted — deactivate them when no longer needed.",
+    "new": "New user",
+    "username": "Username",
+    "fullName": "Full name",
+    "tempPassword": "Temporary password",
+    "passwordHint": "At least 10 characters, letters and digits. Must be changed at first login.",
+    "roles": "Roles",
+    "saveRoles": "Save roles",
+    "rolesSaved": "Roles updated.",
+    "statusActions": "Status & sessions",
+    "sessions": "{n} active sessions",
+    "lastLogin": "Last login",
+    "empty": "No users.",
+    "created": "User created.",
+    "action": {
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "unlock": "Unlock",
+      "reset-password": "Reset password",
+      "revoke-sessions": "Revoke all sessions"
+    },
+    "done": {
+      "activate": "User activated.",
+      "deactivate": "User deactivated.",
+      "unlock": "User unlocked.",
+      "reset-password": "Password reset.",
+      "revoke-sessions": "All sessions revoked."
+    }
+  },
+  "sampleItems": {
+    "description": "Neutral CRUD sample — reference page pattern. Staff can add & edit, only Admin can delete.",
+    "new": "New item",
+    "code": "Code",
+    "name": "Name",
+    "descriptionLabel": "Description",
+    "createdBy": "Created by",
+    "updatedAt": "Updated",
+    "empty": "No items yet.",
+    "created": "Item created.",
+    "updated": "Item updated.",
+    "activated": "Item activated.",
+    "deactivated": "Item deactivated.",
+    "deleted": "Item {code} deleted.",
+    "editTitle": "Edit {code}",
+    "confirmDelete": "Delete {code}?",
+    "confirmDeleteDesc": "The item is permanently deleted and cannot be restored."
+  }
+}

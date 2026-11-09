@@ -1,0 +1,32 @@
+{
+  "name": "@wms/infrastructure",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@wms/application": "workspace:*",
+    "@wms/config": "workspace:*",
+    "@wms/contracts": "workspace:*",
+    "@wms/db": "workspace:*",
+    "@wms/domain": "workspace:*",
+    "argon2": "^0.45.1",
+    "bcryptjs": "^3.0.3",
+    "drizzle-orm": "^0.45.3",
+    "jose": "^6.2.12",
+    "pg": "^8.23.0",
+    "pino": "^10.3.1"
+  },
+  "devDependencies": {
+    "@testcontainers/postgresql": "^12.1.0",
+    "@types/pg": "^8.23.1",
+    "vitest": "^5.0.1"
+  }
+}

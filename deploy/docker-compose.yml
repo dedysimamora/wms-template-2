@@ -1,0 +1,65 @@
+# Deploy satu server (Docker Compose): postgres + migrate (sekali jalan) + web.
+#
+#   cp deploy/wms.env.example deploy/wms.env      # isi rahasia (JANGAN di-commit)
+#   docker compose -f deploy/docker-compose.yml --env-file deploy/wms.env up -d --build
+#
+# Urutan otomatis: postgres sehat → migrate (migrasi forward-only + seed idempoten) selesai → web.
+# Upgrade versi: git pull lalu jalankan perintah yang sama (migrate otomatis jalan ulang).
+name: wms-v2
+
+x-app-env: &app-env
+  NODE_ENV: production
+  DATABASE_URL: postgres://${POSTGRES_USER:-wms}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-wms}
+  JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET}
+  SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET}
+  ACCESS_TOKEN_TTL_SECONDS: ${ACCESS_TOKEN_TTL_SECONDS:-900}
+  REFRESH_TOKEN_TTL_SECONDS: ${REFRESH_TOKEN_TTL_SECONDS:-604800}
+  SCHEMA_MIN_VERSION: ${SCHEMA_MIN_VERSION:-0001}
+  SCHEMA_MAX_VERSION: ${SCHEMA_MAX_VERSION:-0001}
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  COOKIE_SECURE: ${COOKIE_SECURE:-true}
+
+services:
+  postgres:
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-wms}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-wms}
+      TZ: UTC
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-wms}']
+      interval: 5s
+      retries: 20
+
+  # Sekali jalan tiap `up`: migrasi forward-only + seed idempoten, lalu berhenti (exit 0).
+  migrate:
+    build: { context: .., target: migrate }
+    image: wms-v2-migrate:local
+    restart: 'no'
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  web:
+    build:
+      context: ..
+      target: web
+      args: { BRAND_ID: '${BRAND_ID:-default}' }
+    image: wms-v2-web:local
+    restart: unless-stopped
+    environment:
+      <<: *app-env
+      PORT: ${WMS_PORT:-3000}
+    ports:
+      # Default hanya loopback: publikasikan lewat reverse proxy ber-TLS (nginx/Caddy/Cloudflare Tunnel).
+      # Untuk uji di LAN tanpa TLS, set WMS_BIND=0.0.0.0 di wms.env.
+      - '${WMS_BIND:-127.0.0.1}:${WMS_PORT:-3000}:${WMS_PORT:-3000}'
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+volumes:
+  pgdata:
